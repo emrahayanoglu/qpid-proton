@@ -20,6 +20,8 @@
 include(CMakeDependentOption)
 enable_language(CXX)
 
+message($ENV{CXX})
+
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads)
 
