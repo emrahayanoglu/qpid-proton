@@ -159,9 +159,13 @@ set (WERROR_GNU "-Werror")
 set (WERROR_Clang "-Werror")
 set (WERROR_MSVC "")
 
-set (COMMON_WARNING_GNU "-Wall -pedantic-errors -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security")
+set (COMMON_WARNING_GNU "-Wall -pedantic-errors")
 set (COMMON_WARNING_Clang "-Wall -pedantic")
 set (COMMON_WARNING_MSVC "")
+
+if (CMAKE_CXX_COMPILER MATCHES "*arm-tdx-linux-gnueabi*")
+  set (COMMON_WARNING_GNU "${COMMON_WARNING_GNU} -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/elfin_plugin_sdk/sysroots/armv7at2hf-neon-tdx-linux-gnueabi")
+endif()
 
 set (CC_WARNING_GNU "-Wno-unused-parameter -Wstrict-prototypes -Wvla -Wsign-compare -Wwrite-strings")
 set (CC_WARNING_Clang "-Wno-unused-parameter -Wstrict-prototypes -Wvla -Wsign-compare -Wwrite-strings")
@@ -301,11 +305,6 @@ endif (CMAKE_SYSTEM_NAME STREQUAL Windows)
 
 add_custom_target(docs)
 add_custom_target(doc DEPENDS docs)
-
-message(${CMAKE_CXX_FLAGS})
-message(${CMAKE_C_FLAGS})
-message(${CMAKE_C_COMPILER})
-message(${CMAKE_CXX_COMPILER})
 
 # Note: Process bindings after the source lists have been defined so
 # the bindings can reference them.
