@@ -16,8 +16,9 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-
+message($ENV{CXX})
 include(CMakeDependentOption)
+message($ENV{CXX})
 enable_language(CXX)
 
 message($ENV{CXX})
