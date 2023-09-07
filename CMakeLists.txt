@@ -304,6 +304,8 @@ add_custom_target(doc DEPENDS docs)
 
 message(${CMAKE_CXX_FLAGS})
 message(${CMAKE_C_FLAGS})
+message(${CMAKE_C_COMPILER})
+message(${CMAKE_CXX_COMPILER})
 
 # Note: Process bindings after the source lists have been defined so
 # the bindings can reference them.
