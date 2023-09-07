@@ -81,7 +81,7 @@ if (CMAKE_CXX_COMPILER)
 endif()
 
 # Build static C and C++ libraries in addition to shared libraries.
-option(BUILD_STATIC_LIBS "Build static libraries as well as shared libraries" OFF)
+option(BUILD_STATIC_LIBS "Build static libraries as well as shared libraries" ON)
 
 if (CMAKE_CONFIGURATION_TYPES)
   # There is no single "build type"...
@@ -135,7 +135,7 @@ set (NOENABLE_BENCHMARKS ON)
 
 # Add options here called <whatever> they will turn into "ENABLE_<whatever" and can be
 # overridden on a platform specific basis above by NOENABLE_<whatever>
-set (OPTIONS WARNING_ERROR UNDEFINED_ERROR LINKTIME_OPTIMIZATION HIDE_UNEXPORTED_SYMBOLS FUZZ_TESTING BENCHMARKS)
+set (OPTIONS WARNING_ERROR UNDEFINED_ERROR LINKTIME_OPTIMIZATION HIDE_UNEXPORTED_SYMBOLS)
 
 foreach (OPTION ${OPTIONS})
   if (NOT NOENABLE_${OPTION})
@@ -151,7 +151,7 @@ option(ENABLE_HIDE_UNEXPORTED_SYMBOLS "Only export library symbols that are expl
 option(ENABLE_FUZZ_TESTING "Enable building fuzzers and regression testing with libFuzzer" ${DEFAULT_FUZZ_TESTING})
 option(ENABLE_BENCHMARKS "Enable building and running benchmarks with Google Benchmark" ${DEFAULT_BENCHMARKS})
 
-option(BUILD_EXAMPLES "Enable building example programs" ON)
+option(BUILD_EXAMPLES "Enable building example programs" OFF)
 option(BUILD_TLS "Enable building separate TLS library for Proton raw connections" OFF)
 
 # Set any additional compiler specific flags
@@ -308,7 +308,7 @@ add_subdirectory(c)
 
 # Add bindings that do not require swig here - the directory name must be the same as the binding name
 # See below for swig bindings
-set(BINDINGS cpp go python)
+set(BINDINGS cpp)
 
 if (CMAKE_CXX_COMPILER)
   set (DEFAULT_CPP ON)
