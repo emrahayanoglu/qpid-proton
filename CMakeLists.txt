@@ -302,6 +302,9 @@ endif (CMAKE_SYSTEM_NAME STREQUAL Windows)
 add_custom_target(docs)
 add_custom_target(doc DEPENDS docs)
 
+message(${CMAKE_CXX_FLAGS})
+message(${CMAKE_C_FLAGS})
+
 # Note: Process bindings after the source lists have been defined so
 # the bindings can reference them.
 add_subdirectory(c)
