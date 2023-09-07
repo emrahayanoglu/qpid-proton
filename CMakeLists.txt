@@ -163,7 +163,7 @@ set (COMMON_WARNING_GNU "-Wall -pedantic-errors")
 set (COMMON_WARNING_Clang "-Wall -pedantic")
 set (COMMON_WARNING_MSVC "")
 
-if (CMAKE_CXX_COMPILER MATCHES "*arm-tdx-linux-gnueabi*")
+if (CMAKE_CXX_COMPILER MATCHES ".*arm-tdx-linux-gnueabi.*")
   set (COMMON_WARNING_GNU "${COMMON_WARNING_GNU} -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/elfin_plugin_sdk/sysroots/armv7at2hf-neon-tdx-linux-gnueabi")
 endif()
 
