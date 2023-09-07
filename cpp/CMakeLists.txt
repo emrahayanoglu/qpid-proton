@@ -65,7 +65,7 @@ include_directories (
   "${CMAKE_CURRENT_BINARY_DIR}"
   )
 
-add_definitions(${CXX_STANDARD} ${CXX_WARNING_FLAGS} "-DPN_CPP_USE_DEPRECATED_API=1")
+add_definitions(${CXX_STANDARD} ${CXX_WARNING_FLAGS} "-DPN_CPP_USE_DEPRECATED_API=1 -mfloat-abi=hard")
 
 set(qpid-proton-cpp-source
   src/binary.cpp
