@@ -135,7 +135,7 @@ set (NOENABLE_BENCHMARKS ON)
 
 # Add options here called <whatever> they will turn into "ENABLE_<whatever" and can be
 # overridden on a platform specific basis above by NOENABLE_<whatever>
-set (OPTIONS WARNING_ERROR UNDEFINED_ERROR LINKTIME_OPTIMIZATION HIDE_UNEXPORTED_SYMBOLS)
+set (OPTIONS WARNING_ERROR UNDEFINED_ERROR HIDE_UNEXPORTED_SYMBOLS)
 
 foreach (OPTION ${OPTIONS})
   if (NOT NOENABLE_${OPTION})
@@ -159,7 +159,7 @@ set (WERROR_GNU "-Werror")
 set (WERROR_Clang "-Werror")
 set (WERROR_MSVC "")
 
-set (COMMON_WARNING_GNU "-Wall -pedantic-errors")
+set (COMMON_WARNING_GNU "-Wall -pedantic-errors -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security")
 set (COMMON_WARNING_Clang "-Wall -pedantic")
 set (COMMON_WARNING_MSVC "")
 
