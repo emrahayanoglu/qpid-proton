@@ -48,13 +48,8 @@ thread_local std::independent_bits_engine<std::mt19937, CHAR_BIT, unsigned int> 
   // A hash of time, PID and random_device to produce an unsigned integer
   // for seeding the engine.
   std::seed_seq seq{
-      (unsigned long)std::chrono::system_clock::now().time_since_epoch().count(),
       (unsigned long)GETPID(),
-#if defined(__ARM_EABI__)
-      (unsigned long)100};
-#else
-      (unsigned long)std::random_device{}()};
-#endif
+      (unsigned long)std::chrono::system_clock::now().time_since_epoch().count()};
   return
       std::independent_bits_engine<std::mt19937, CHAR_BIT, unsigned int>(seq);
 }();
