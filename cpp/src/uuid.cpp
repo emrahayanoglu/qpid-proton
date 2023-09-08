@@ -50,8 +50,8 @@ thread_local std::independent_bits_engine<std::mt19937, CHAR_BIT, unsigned int> 
   std::seed_seq seq{
       (unsigned long)std::chrono::system_clock::now().time_since_epoch().count(),
       (unsigned long)GETPID(),
-#ifdef __arm__
-      (unsigned long)std::random_device{"pseudorandom"}()};
+#if defined(__ARM_EABI__)
+      100};
 #else
       (unsigned long)std::random_device{}()};
 #endif
