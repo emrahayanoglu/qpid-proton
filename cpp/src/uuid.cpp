@@ -51,7 +51,7 @@ thread_local std::independent_bits_engine<std::mt19937, CHAR_BIT, unsigned int> 
       (unsigned long)std::chrono::system_clock::now().time_since_epoch().count(),
       (unsigned long)GETPID(),
 #if defined(__ARM_EABI__)
-      100};
+      (unsigned long)100};
 #else
       (unsigned long)std::random_device{}()};
 #endif
